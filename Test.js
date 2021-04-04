@@ -1,28 +1,5 @@
 var ss = SpreadsheetApp.openByUrl("https://docs.google.com/spreadsheets/d/1_o6VEDP8XMFzb7xerS1jkdt94_if88chqQuZwzZOxFc/edit");
 var sNoti = ss.getSheetByName("noti-userId");
-
-function sendFlexNotiSetting() {
-    var result = {
-        "fulfillmentMessages": [
-          {
-            "platform": "line",
-            "type": 4,
-            "payload" : {
-              "line":  {
-                "type" : "flex",
-                 "altText": "ทะเบียนสรรพสามิต",
-                  "contents": {
-                    "type": "carousel",
-                    "contents": carousel
-                  }
-              }
-            }
-          }
-        ]
-      };
-    let replyJSON = ContentService.createTextOutput(JSON.stringify(result)).setMimeType(ContentService.MimeType.JSON);
-    return replyJSON;
-}
     
 
 function doPost(e) {
@@ -53,6 +30,4 @@ function doPost(e) {
             },carousel.push(bubble); 
         }
       }
-      return sendFlexNotiSetting();
-    }
 }
