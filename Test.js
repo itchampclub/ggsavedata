@@ -30,4 +30,5 @@ function doPost(e) {
             },carousel.push(bubble); 
         }
       }
+   }
 }
