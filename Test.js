@@ -30,5 +30,29 @@ function doPost(e) {
             },carousel.push(bubble); 
         }
       }
+
+////////////////วางไว้ใต้ }  end for loop////////////
+  var result = {
+          "fulfillmentMessages": [
+            {
+              "platform": "line",
+              "type": 4,
+              "payload" : {
+                "line":  {
+                  "type" : "flex",
+                   "altText": "ทะเบียนสรรพสามิต",
+                    "contents": {
+                      "type": "carousel",
+                      "contents": carousel
+                    }
+                }
+              }
+            }
+          ]
+        };
+  let replyJSON = ContentService.createTextOutput(JSON.stringify(result)).setMimeType(ContentService.MimeType.JSON);
+  return replyJSON;
+//////////////////////////////////////////////////
+
    }
 }
